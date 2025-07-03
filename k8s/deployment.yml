@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: car-app
+  labels:
+    app: car-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: car-app
+  template:
+    metadata:
+      labels:
+        app: car-app
+    spec:
+      containers:
+      - name: autoshyam
+        image: autoshyam:latest
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "250m"
+
