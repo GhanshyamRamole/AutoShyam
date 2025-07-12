@@ -16,14 +16,14 @@ pipeline {
                 cleanWs()
             }
         }
-        stage('Checkout from Git') {
+        stage('Checkout source from Github') {
             steps {
                 git credentialsId: 'GITHUB', url: 'https://github.com/GhanshyamRamole/AutoShyam.git', branch: 'main'
             }
         }
         stage('Sonarqube Analysis') {
             steps {
-                dir('AutoShyam/AppApplication') {
+                dir('AutoShyam/Application') {
                     withSonarQubeEnv('sonar-server') {
                         sh ''' $SCANNER_HOME/bin/sonar-scanner \
                         -Dsonar.projectName=application \
@@ -42,7 +42,7 @@ pipeline {
         }
         stage('OWASP Dependency-Check Scan') {
             steps {
-                dir('AutoShyam/AppApplication') {
+                dir('AutoShyam/Application') {
                     dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit', odcInstallation: 'DP-Check'
                     dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
                 }
@@ -50,7 +50,7 @@ pipeline {
         }
         stage('Trivy File Scan') {
             steps {
-                dir('AutoShyam/AppApplication') {
+                dir('AutoShyam/Application') {
                     sh 'trivy fs . > trivyfs.txt'
                 }
             }
@@ -58,7 +58,7 @@ pipeline {
         stage("Docker Image Build") {
             steps {
                 script {
-                    dir('./AppApplication/') {
+                    dir('./Application/') {
                             sh 'docker system prune -f'
                             sh 'docker container prune -f'
                             sh 'docker build -t ${AWS_ECR_REPO_NAME} .'
@@ -100,12 +100,12 @@ pipeline {
                             git config user.name "GhanshyamRamole"
                             BUILD_NUMBER=${BUILD_NUMBER}
                             echo $BUILD_NUMBER
-                            imageTag=$(grep -oP '(?<=application:)[^ ]+' deployment.yaml)
+                            imageTag=$(grep -oP '(?<=application:)[^ ]+' deployment.yml)
                             echo $imageTag
-                            sed -i "s/${AWS_ECR_REPO_NAME}:${imageTag}/${AWS_ECR_REPO_NAME}:${BUILD_NUMBER}/" deployment.yaml
-                            git add deployment.yaml
+                            sed -i "s/${AWS_ECR_REPO_NAME}:${imageTag}/${AWS_ECR_REPO_NAME}:${BUILD_NUMBER}/" deployment.yml
+                            git add deployment.yml
                             git commit -m "Update deployment Image to version \${BUILD_NUMBER}"
-                            git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:master
+                            git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
                         '''
                     }
                 }
