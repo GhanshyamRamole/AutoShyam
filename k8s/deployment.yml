@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: autoshyam
-        image: autoshyam:latest
+        image: application:latest
         ports:
         - containerPort: 80
         resources:
