@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Amazon Q CLI with MCP Server Setup on Linux (Ubuntu)
+
+echo "up-to-date machine and installing libfuse2 package."
+sudo apt-get update -y
+sudo apt install libfuse2 -y
+
+echo "Install latest .deb package"
+curl --proto '=https' --tlsv1.2 -sSf https://desktop-release.q.us-east-
+1.amazonaws.com/latest/amazon-q.deb -o amazon-q.deb
+
+echo "Install downloaded package"
+sudo apt install -y ./amazon-q.deb
+
+echo "Loging to Amazon q"
+q login 
