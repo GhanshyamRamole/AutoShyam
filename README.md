@@ -362,14 +362,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Use `kubectl logs` for Kubernetes troubleshooting
 - Monitor application metrics in Grafana
 
-## 🔗 Useful Links
+## 🔗 Useful Link
 
-- [React Documentation](https://reactjs.org/)
-- [TypeScript Documentation](https://www.typescriptlang.org/)
-- [Vite Documentation](https://vitejs.dev/)
-- [Kubernetes Documentation](https://kubernetes.io/)
-- [Docker Documentation](https://docs.docker.com/)
-- [Amazon Q Documentation](https://docs.aws.amazon.com/amazonq/)
+- [Amazon Q Documentation](https://www.linkedin.com/feed/update/urn:li:activity:7347614009635827713/?originTrackingId=qQZNlr3cTLSJVADiPv3I7Q%3D%3D)
+
 
 ---
 
