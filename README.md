@@ -364,7 +364,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🔗 Useful Link
 
-- [Amazon Q Documentation](https://www.linkedin.com/feed/update/urn:li:activity:7347614009635827713/?originTrackingId=qQZNlr3cTLSJVADiPv3I7Q%3D%3D)
+- [AI-Ops Documentation](https://www.linkedin.com/feed/update/urn:li:activity:7347614009635827713/?originTrackingId=qQZNlr3cTLSJVADiPv3I7Q%3D%3D)
 
 
 ---
